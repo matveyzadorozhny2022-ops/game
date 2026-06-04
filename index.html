@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#ffd629" />
+  <title>Territory Stars — Mobile Battle</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="app-bg" aria-hidden="true"></div>
+
+  <main class="app-shell">
+    <section id="menu" class="menu-screen">
+      <header class="menu-head">
+        <div class="logo-card">
+          <img src="./assets/tgtar.png" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+          <span>★</span>
+        </div>
+        <div>
+          <p class="eyebrow">Stars Battle</p>
+          <h1>Territory</h1>
+        </div>
+      </header>
+
+      <div class="balance-line">
+        <span>Баланс</span>
+        <strong><b id="menuBalanceValue">100</b><i class="star-inline"></i></strong>
+      </div>
+
+      <section class="stake-panel">
+        <div class="stake-panel__top">
+          <span>Ставка</span>
+          <b><span id="selectedStakeLabel">10</span><i class="star-inline"></i></b>
+        </div>
+        <div id="stakeOptions" class="stake-options" aria-label="Выбор ставки"></div>
+        <div class="fund-strip">
+          <div><span>Фонд</span><b id="fundValue">50</b></div>
+          <div><span>Приз</span><b id="prizeValue">45</b></div>
+          <div><span>Комиссия</span><b id="feeValue">5</b></div>
+        </div>
+      </section>
+
+      <button id="startButton" class="primary-cta">Начать играть <span>→</span></button>
+      <p id="startError" class="tiny-note">Тестовый режим · стартовый баланс 100</p>
+    </section>
+
+    <section id="gameScreen" class="game-screen hidden" aria-label="Игровой экран">
+      <div class="game-topbar">
+        <div class="hud-pills">
+          <div class="hud-pill"><span>Баланс</span><b id="hudBalance">100</b><i class="star-inline"></i></div>
+          <div class="hud-pill"><span>Фонд</span><b id="hudFund">50</b><i class="star-inline"></i></div>
+          <div class="hud-pill is-prize"><span>Приз</span><b id="hudPrize">45</b><i class="star-inline"></i></div>
+          <div class="hud-pill is-time"><span>Время</span><b id="matchTimer">5:00</b></div>
+        </div>
+        <div class="top-actions">
+          <button id="pauseButton" class="icon-btn" aria-label="Пауза">II</button>
+          <button id="restartButton" class="icon-btn" aria-label="В меню">×</button>
+        </div>
+      </div>
+
+      <div class="arena-shell">
+        <canvas id="gameCanvas" aria-label="Карта игры"></canvas>
+        <div class="arena-vignette" aria-hidden="true"></div>
+        <div id="countdown" class="countdown hidden">3</div>
+
+        <div class="capture-card">
+          <div class="capture-card__row">
+            <span>Территория</span>
+            <b id="territoryLabel">0%</b>
+          </div>
+          <div class="progress-wrap"><i id="captureProgress"></i></div>
+        </div>
+
+        <div class="mini-board" id="scoreRows" aria-label="Счёт игроков"></div>
+
+        <div id="joystick" class="joystick" aria-label="Джойстик управления">
+          <div id="joystickKnob" class="joystick__knob"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="resultModal" class="result-modal hidden" role="dialog" aria-modal="true">
+      <div class="modal-panel">
+        <button id="backToMenuButton" class="modal-close" aria-label="Закрыть">×</button>
+        <p id="resultKicker" class="eyebrow">Матч завершён</p>
+        <h2 id="resultTitle">Победа!</h2>
+        <p id="resultText" class="result-text"></p>
+        <div class="result-prize">
+          <span id="resultPrizeLabel">Твой выигрыш</span>
+          <strong><span id="resultPrize">45</span><i class="star-inline large"></i></strong>
+        </div>
+        <button id="playAgainButton" class="primary-cta">Играть ещё <span>→</span></button>
+      </div>
+    </section>
+  </main>
+
+  <template id="starIconTemplate">
+    <span class="star-badge">
+      <img src="./assets/tgtar.png" alt="звезда" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';" />
+      <span class="star-fallback">★</span>
+    </span>
+  </template>
+
+
+  <script src="./js/game.js"></script>
+</body>
+</html>
