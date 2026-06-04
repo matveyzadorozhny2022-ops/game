@@ -130,7 +130,7 @@
     const jobs = [];
     for (let i = 1; i <= SKIN_ASSET_LIMIT; i += 1) {
       const name = `skin${i}.png`;
-      const src = localAssetUrl(`assets/${name}`);
+      const src = localAssetUrl(name);
       jobs.push(preloadImage(src).then((img) => img ? { name, src, img } : null));
     }
     skinLoadPromise = Promise.all(jobs).then((items) => {
